@@ -53,9 +53,6 @@ This project is a **modern, responsive admin dashboard** built with **Nuxt.js**.
 ✅ Styled with **Tailwind CSS** for a modern and responsive design.  
 ✅ Fully adaptable for **mobile, tablet, and desktop**.  
 
-### **🌙 Bonus Enhancements**  
-✅ **Deployment Ready** – Can be hosted on **Netlify**.  
-
 ---
 
 ### **📁 Project Structure**  
