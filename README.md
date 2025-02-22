@@ -59,21 +59,22 @@ This project is a **modern, responsive admin dashboard** built with **Nuxt.js**.
 
 ---
 
-## **📁 Project Structure**  
-```bash
+### **📁 Project Structure**  
+
 📦 project-root
 ├── 📂 pages/        # Main dashboard and orders page
 ├── 📂 layouts/      # Reusable layout (sidebar + navbar)
 ├── 📂 components/   # UI elements like cards, charts, and tables
 └── 📂 assets/       # Static images, etc.
-_______________________________________________________________________
-## 🛠️ Tech Stack  
+
+
+### 🛠️ Tech Stack  
 - **Nuxt.js 3** (latest version)  
 - **Tailwind CSS** (for styling)  
 - **Chart.js / ApexCharts** (for data visualization)  
 ---
 
-## 📜 Setup & Installation  
+### 📜 Setup & Installation  
 
 ### 1️⃣ Clone the repository  
 ```bash
@@ -86,7 +87,7 @@ npm install
 ### 3️⃣ Run the development server
 ```bash
 npm run dev
-## 📷 Screenshots  
+### 📷 Screenshots  
 
 ### 💻 Desktop View  
 ![Desktop View](https://github.com/user-attachments/assets/d184d9f9-8bb1-4c56-8ac0-263448997e6a)  
@@ -99,6 +100,6 @@ npm run dev
 
 ---
 
-## 🔗 Live Demo & Repository  
+### 🔗 Live Demo & Repository  
 - **GitHub Repo:** [🔗 Add Your Link Here]  
 - **Live Demo:** [🔗 Add Deployment Link]  
