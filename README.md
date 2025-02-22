@@ -14,7 +14,6 @@
 6. [📷 Screenshots](#-screenshots)  
    - [💻 Desktop View](#-desktop-view)  
    - [📱 Mobile View](#-mobile-view)  
-7. [🔗 Live Demo & Repository](#-live-demo--repository)  
 
 ---
 
@@ -102,6 +101,3 @@ npm run dev
 
 ---
 
-### 🔗 Live Demo & Repository  
-- **GitHub Repo:** [🔗 Add Your Link Here]  
-- **Live Demo:** [🔗 Add Deployment Link]  
