@@ -7,15 +7,10 @@
         <i class="fa-solid fa-right-long font fa-sm"></i>
       </NuxtLink>
     </div>
-    
     <div class="p-6 bg-white shadow-gray-500 rounded-lg overflow-x-auto">
-      <!-- عرض التحميل أثناء جلب البيانات -->
-      <div v-if="loading" class="p-4 text-center font-bold text-gray-500">
-        Loading ...
-      </div>
-      
-      <!-- عرض الجدول فقط عند انتهاء التحميل -->
-      <table v-if="!loading" class="w-full border-collapse bg-white text-left text-sm text-gray-400">
+      <table
+        class="w-full border-collapse bg-white text-left text-sm text-gray-400"
+      >
         <thead>
           <tr class="bg-gray-100 text-gray-400">
             <th class="px-4 py-3">Item Name</th>
@@ -28,8 +23,15 @@
         <tbody>
           <tr v-for="data in info" :key="data.id" class="hover:bg-gray-50">
             <td class="px-4 py-3 flex">
-              <img :src="data.img" width="30px" height="30px" class="rounded-2xl" alt="product" />
-              <span class="mx-3 font-bold text-gray-800">{{ data.name }}</span>
+              <img
+                :src="data.img"
+                width="30px"
+                height="30px"
+                class="rounded-2xl"
+                alt="product"
+              /><span class="mx-3 font-bold text-gray-800">{{
+                data.name
+              }}</span>
             </td>
             <td class="px-4 py-3">
               <span class="text-gray-800 font-bold">{{ data.qity }}</span>
@@ -39,13 +41,23 @@
               <span class="text-gray-800 font-bold">{{ data.amount }}</span>
             </td>
             <td class="px-4 py-3">
-              <span :class="['font-bold px-4 py-1 rounded-md', data.statusColor, data.statusBg]">
+              <span
+              :class="[
+                  'font-bold px-4 py-1 rounded-md',
+                  data.statusColor,
+                  data.statusBg,
+                ]"
+              >
                 {{ data.status }}
               </span>
             </td>
           </tr>
         </tbody>
       </table>
+      <!-- Start Loading -->
+      <div v-if="loading" class="p-4 text-center font-bold text-gray-500">
+        Loading ...
+      </div>
     </div>
   </div>
 </template>
