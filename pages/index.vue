@@ -17,7 +17,7 @@
     </div>
     <!-- End Charts -->
     <!-- Start Recent Orders Table -->
-      <RecentOrders />
+    <RecentOrders />
     <!-- End Recent Orders Table -->
   </div>
 </template>

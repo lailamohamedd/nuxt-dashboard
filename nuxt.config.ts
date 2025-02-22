@@ -5,6 +5,7 @@ export default defineNuxtConfig({
   compatibilityDate: "2024-11-01",
   devtools: { enabled: false },
   css: ["/public/css/main.css"],
+  darkMode: "class",
   plugins: [{ src: "~/plugins/vue-apexcharts", mode: "client" }],
   vite: {
     plugins: [tailwindcss()],

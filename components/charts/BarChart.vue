@@ -1,6 +1,6 @@
 <template>
   <div class="bg-white p-6 shadow-gray-500 rounded-lg">
-      <h2 class="text-xl font-bold text-gray-800">Visits</h2>
+    <h2 class="text-xl font-bold text-gray-800">Visits</h2>
     <apexchart
       type="bar"
       height="350"
@@ -16,7 +16,7 @@ import { ref } from "vue";
 const series = ref([
   {
     name: "Visits",
-    data: [120, 200, 150, 80, 170, 210, 140], 
+    data: [120, 200, 150, 80, 170, 210, 140],
   },
 ]);
 
