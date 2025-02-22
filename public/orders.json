@@ -1,0 +1,91 @@
+[
+    {
+      "id": 1,
+      "img": "/images/1.jpeg",
+      "name": "iPhone 15 Pro",
+      "qity": "2",
+      "date": "February 10, 2024",
+      "amount": "$999.00",
+      "status": "Approved",
+      "statusColor": "text-green-500",
+      "statusBg": "bg-green-50"
+    },
+    {
+      "id": 2,
+      "img": "/images/1.jpeg",
+      "name": "Samsung Galaxy S23 Ultra",
+      "qity": "1",
+      "date": "February 8, 2024",
+      "amount": "$1199.00",
+      "status": "In Process",
+      "statusColor": "text-orange-500",
+      "statusBg": "bg-orange-50"
+    },
+    {
+      "id": 3,
+      "img": "/images/1.jpeg",
+      "name": "MacBook Pro 16”",
+      "qity": "1",
+      "date": "February 5, 2024",
+      "amount": "$2499.00",
+      "status": "Pending",
+      "statusColor": "text-blue-500",
+      "statusBg": "bg-blue-50"
+    },
+    {
+      "id": 4,
+      "img": "/images/1.jpeg",
+      "name": "iPad Pro 12.9”",
+      "qity": "3",
+      "date": "February 3, 2024",
+      "amount": "$1099.00",
+      "status": "Approved",
+      "statusColor": "text-green-500",
+      "statusBg": "bg-green-50"
+    },
+    {
+      "id": 5,
+      "img": "/images/1.jpeg",
+      "name": "PlayStation 5",
+      "qity": "1",
+      "date": "January 30, 2024",
+      "amount": "$499.00",
+      "status": "Approved",
+      "statusColor": "text-green-500",
+      "statusBg": "bg-green-50"
+    },
+    {
+      "id": 6,
+      "img": "/images/1.jpeg",    
+      "name": "Xbox Series X",
+      "qity": "2",
+      "date": "January 28, 2024",
+      "amount": "$999.00",
+      "status": "In Process",
+      "statusColor": "text-orange-500",
+      "statusBg": "bg-orange-50"
+    },
+    {
+      "id": 7,
+      "img": "/images/1.jpeg",
+      "name": "Apple Watch Ultra",
+      "qity": "1",
+      "date": "January 25, 2024",
+      "amount": "$799.00",
+      "status": "Pending",
+      "statusColor": "text-blue-500",
+      "statusBg": "bg-blue-50"
+    },
+    {
+      "id": 8,
+      "img": "/images/1.jpeg",
+      "name": "AirPods Pro",
+      "qity": "3",
+      "date": "January 22, 2024",
+      "amount": "$249.00",
+      "status": "Approved",
+      "statusColor": "text-green-500",
+      "statusBg": "bg-green-50"
+    }
+  ]
+  
