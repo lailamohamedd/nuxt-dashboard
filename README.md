@@ -85,6 +85,8 @@ npm install
 ### 3️⃣ Run the development server
 npm run dev
 
+### Deployment
+https://nuxt-dashboard-w5ds.vercel.app/
 ### 📷 Screenshots  
 
 ### 💻 Desktop View  
