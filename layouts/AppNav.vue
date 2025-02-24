@@ -16,7 +16,6 @@
       />
     </div>
     <div class="flex w-100 items-center justify-end gap-x-3">
-      <!-- <DarkModeToggle /> -->
       <button class="rounded-md px-2 py-1 bg-gray-100 text-gray-400">
         <i class="fa-solid fa-bag-shopping fa-md"></i>
       </button>
@@ -48,7 +47,6 @@
 </template>
 
 <script setup>
-import DarkModeToggle from "../components/DarkModeToggle.vue";
 </script>
 
 <style scoped></style>
