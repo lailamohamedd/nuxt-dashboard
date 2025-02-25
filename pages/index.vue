@@ -26,5 +26,11 @@ import AnalyticsCards from "~/components/AnalyticsCards.vue";
 import AreaChart from "~/components/charts/AreaChart.vue";
 import BarChart from "~/components/charts/BarChart.vue";
 import RecentOrders from "~/components/RecentOrders.vue";
+const userData = useCookie("user");
+
+useCookie("use", {
+  maxAge: 60 * 60 * 24,
+}).value = "New Value"
+console.log(userData.value)
 </script>
 <style scoped></style>

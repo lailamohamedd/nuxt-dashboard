@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white p-6 shadow-gray-500 rounded-lg">
+  <div class="card bg-white p-6 shadow-gray-500 rounded-lg">
     <h2 class="text-xl font-bold text-gray-800">Visits</h2>
     <apexchart
       type="bar"

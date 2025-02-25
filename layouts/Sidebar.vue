@@ -4,14 +4,12 @@
       @click="isSidebarOpen = !isSidebarOpen"
       class="md:hidden mt-3 absolute cursor-pointer text-gray-800 py-2 px-4 rounded z-50"
     >
-      <i
-        class="fa-solid fa-bars text-xl text-gray-400"
-      ></i>
+      <i class="fa-solid fa-bars text-xl text-gray-400"></i>
     </button>
 
     <div
       :class="[
-        'w-70 bg-white shadow h-full px-5 py-2 fixed top-0 left-0 transition-transform duration-300 z-50',
+        'sidebar w-70 bg-white shadow h-full px-5 py-2 fixed top-0 left-0 transition-transform duration-300 z-50',
         isSidebarOpen ? 'translate-x-0' : '-translate-x-70',
         'md:translate-x-0',
       ]"
@@ -26,18 +24,24 @@
         <li
           v-for="(item, index) in menuItems"
           :key="index"
-          class="text-gray-400 rounded mb-2 active:hover:bg-blue-50 active:text-blue-500 hover:text-blue-500 hover:bg-blue-50 first:bg-blue-50 first:text-blue-500"
+          class="text-gray-400 rounded mb-2  first:bg-blue-50 first:text-blue-500"
         >
-        <nuxt-link class="px-3 flex items-center  py-3" active-class="bg-blue-50 text-blue-500" :to="{ name: item.link }">
-          <i :class="['fa-solid', item.icon, 'mr-3 fa-lg']"></i>
-          {{ item.name }}
-        </nuxt-link>
+          <nuxt-link
+            class="p-3 flex items-center"
+            active-class="bg-blue-50 text-blue-500 rounded active:hover:bg-blue-50 active:hover:text-blue-500"
+            :to="{ name: item.link }"
+          >
+            <i :class="['fa-solid', item.icon, 'mr-3 fa-lg']"></i>
+            {{ item.name }}
+          </nuxt-link>
         </li>
         <hr class="pb-3 mt-5 border-gray-200" />
-        <li
-          class="mb-2 text-gray-400"
-        >
-          <nuxt-link class="px-3 flex justify-between items-center rounded active:hover:bg-blue-50 active:text-blue-500 hover:text-blue-500 hover:bg-blue-50  py-3" active-class="bg-blue-50 text-blue-500" :to="{ name: 'messages' }">
+        <li class="mb-2 text-gray-400">
+          <nuxt-link
+            class="p-3 flex justify-between items-center rounded active:rounded active:hover:bg-blue-50 active:hover:text-blue-500"
+            active-class="bg-blue-50 text-blue-500"
+            :to="{ name: 'messages' }"
+          >
             <span>
               <i class="fa-solid fa-comment-dots fa-lg mr-3"></i>
               Messages
@@ -45,20 +49,24 @@
             <span class="h-4 w-4 bg-red-400 rounded-2xl mx-2"></span>
           </nuxt-link>
         </li>
-        <li
-          class="mb-2 text-gray-400"
-        >
-          <nuxt-link class="px-3 flex items-center rounded active:hover:bg-blue-50 active:text-blue-500 hover:text-blue-500 hover:bg-blue-50  py-3" active-class="bg-blue-50 text-blue-500" :to="{ name: 'support' }">
+        <li class="mb-2 text-gray-400">
+          <nuxt-link
+            class="p-3 flex items-center rounded active:hover:bg-blue-50 active:rounded active:hover:text-blue-500"
+            active-class="bg-blue-50 text-blue-500"
+            :to="{ name: 'support' }"
+          >
             <i class="fa-regular fa-life-ring fa-lg mr-3"></i>
-              Support
+            Support
           </nuxt-link>
         </li>
-        <li
-          class="mb-2 text-gray-400"
-        >
-          <nuxt-link class="px-3 flex items-center rounded active:hover:bg-blue-50 active:text-blue-500 hover:text-blue-500 hover:bg-blue-50  py-3" active-class="bg-blue-50 text-blue-500" :to="{ name: 'settings' }">
+        <li class="mb-2 text-gray-400">
+          <nuxt-link
+            class="p-3 flex items-center rounded active:hover:bg-blue-50 active:rounded active:hover:text-blue-500"
+            active-class="bg-blue-50 text-blue-500"
+            :to="{ name: 'settings' }"
+          >
             <i class="fa-solid fa-gear fa-lg mr-3"></i>
-              Settings
+            Settings
           </nuxt-link>
         </li>
       </ul>

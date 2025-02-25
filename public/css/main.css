@@ -1,5 +1,45 @@
 @import "tailwindcss";
-
 body {
-    @apply bg-gray-100;
+  @apply bg-gray-100 text-gray-600 transition-colors duration-300;
+}
+
+.dark body {
+  @apply bg-gray-900 text-gray-50;
+}
+
+.dark table,
+.dark .card,
+.dark .card h2,
+.dark .card .apexcharts-menu,
+.dark .drop-list,
+.dark nav, 
+.dark .sidebar {
+  @apply bg-gray-800 text-gray-300;
+}
+.dark .card .apexcharts-menu {
+  @apply border-gray-800 shadow-md
+}
+.dark .card text {
+  fill: rgb(221, 220, 220) !important
+}
+.dark thead tr,
+.dark nav button.btn-icon,
+.dark .search,
+.dark .pagination button {
+  @apply bg-gray-900 text-gray-200;
+}
+
+.dark body td,
+.dark .sidebar h1 {
+  @apply text-gray-200;
+}
+.dark .sidebar .router-link-exact-active,
+.dark .sidebar li:first-child {
+  @apply bg-blue-950 text-blue-100
+}
+.dark .sidebar hr {
+  @apply border-gray-700
+}
+.dark tbody tr:hover {
+  @apply bg-gray-900 text-gray-200;
 }

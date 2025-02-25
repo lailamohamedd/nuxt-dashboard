@@ -4,23 +4,22 @@
       <div
         v-for="(card, index) in cards"
         :key="index"
-        class="flex items-center bg-white px-4 py-8 shadow-md rounded-2xl dark:bg-gray-800 dark:shadow-gray-700"
+        class="card flex items-center bg-white px-4 py-8 rounded-2xl"
       >
         <div
           class="w-13 h-13 flex items-center justify-center rounded-full"
           :class="[
             card.bgColor,
             card.textColor,
-            'dark:bg-gray-700 dark:text-blue-300',
           ]"
         >
           <i :class="['fa-solid', card.icon, 'text-xl']"></i>
         </div>
         <div class="mx-2">
-          <p class="text-sm text-gray-400 dark:text-gray-300">
+          <p class="text-sm text-gray-400">
             {{ card.title }}
           </p>
-          <h2 class="text-gray-800 font-bold text-xl dark:text-white">
+          <h2 class="text-gray-800 font-bold text-xl">
             {{ card.price }}
             <span
               v-if="card.badge"

@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white px-6 pt-6 pb-2 shadow-gray-500 rounded-lg">
+  <div class="card bg-white px-6 pt-6 pb-2 shadow-gray-500 rounded-lg">
     <div class="flex justify-between mb-1">
       <h2 class="mb-3 text-lg font-bold">Reports</h2>
       <div class="flex space-x-2">

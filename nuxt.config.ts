@@ -18,6 +18,7 @@ export default defineNuxtConfig({
   app: {
     head: {
       title: "Manager Pro",
+
       meta: [
         {
           name: "description",
@@ -49,6 +50,12 @@ export default defineNuxtConfig({
         },
         { rel: "icon", type: "image/png", href: "/images/logo.png" },
       ],
+      htmlAttrs: {
+        class: "dark",
+      },
     },
   },
+  // axios: {
+  //   baseURL: 'https://dummyjson.com/auth/login', 
+  // },
 });

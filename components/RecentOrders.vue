@@ -7,7 +7,8 @@
         <i class="fa-solid fa-right-long font fa-sm"></i>
       </NuxtLink>
     </div>
-    <div class="p-6 bg-white shadow-gray-500 rounded-lg overflow-x-auto">
+    <!-- Orders Table -->
+    <div class="card p-6 bg-white shadow-gray-500 rounded-lg overflow-x-auto">
       <table
         class="w-full border-collapse bg-white text-left text-sm text-gray-400"
       >
@@ -21,40 +22,34 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="data in info" :key="data.id" class="hover:bg-gray-50">
-            <td class="px-4 py-3 flex">
+          <tr v-for="item in orders" :key="item.id" class="hover:bg-gray-50">
+            <td class="px-4 py-3 flex items-center text-gray-800">
               <img
-                :src="data.img"
-                width="30px"
-                height="30px"
+                :src="item.thumbnail"
+                width="30"
                 class="rounded-2xl"
                 alt="product"
-              /><span class="mx-3 font-bold text-gray-800">{{
-                data.name
-              }}</span>
+              />
+              <span class="mx-3 font-bold">{{ item.title }}</span>
             </td>
-            <td class="px-4 py-3">
-              <span class="text-gray-800 font-bold">{{ data.qity }}</span>
-            </td>
-            <td class="px-4 py-3 font-bold">{{ data.date }}</td>
-            <td class="px-4 py-3">
-              <span class="text-gray-800 font-bold">{{ data.amount }}</span>
+            <td class="px-4 py-3 font-bold text-gray-800">{{ item.stock }}</td>
+            <td class="px-4 py-3 font-bold">{{ item.date }}</td>
+            <td class="px-4 py-3 font-bold text-gray-800">
+              {{ item.amount }}$
             </td>
             <td class="px-4 py-3">
               <span
-                :class="[
-                  'font-bold px-4 py-1 rounded-md',
-                  data.statusColor,
-                  data.statusBg,
-                ]"
+                class="font-bold px-4 py-1 rounded-md"
+                :class="[item.statusColor, item.statusBg]"
               >
-                {{ data.status }}
+                {{ item.status }}
               </span>
             </td>
           </tr>
         </tbody>
       </table>
-      <!-- Start Loading -->
+
+      <!--  Loading  -->
       <div v-if="loading" class="p-4 text-center font-bold text-gray-500">
         Loading ...
       </div>
@@ -65,20 +60,54 @@
 <script setup>
 import { ref, onMounted } from "vue";
 
-const info = ref([]);
+const orders = ref([]);
 const loading = ref(true);
 
 onMounted(async () => {
   try {
-    const response = await fetch("/orders.json");
+    const response = await fetch("https://dummyjson.com/products");
     if (!response.ok) throw new Error("Failed to fetch data");
 
     const data = await response.json();
-    info.value = data.slice(-3);
+    orders.value = data.products.slice(-3).map((item, index) => {
+      const status = getStatus(index);
+      const { color, bg } = getStatusStyle(status);
+      return {
+        id: item.id,
+        title: item.title,
+        thumbnail: item.thumbnail,
+        stock: item.stock,
+        date: generateDate(index),
+        amount: (item.price * 2).toFixed(2),
+        status,
+        statusColor: color,
+        statusBg: bg,
+      };
+    });
   } catch (error) {
     console.error("Error loading orders:", error);
   } finally {
     loading.value = false;
   }
 });
+
+const getStatus = (index) => {
+  const statuses = ["Pending", "Shipped", "Delivered"];
+  return statuses[index % statuses.length];
+};
+
+const getStatusStyle = (status) => {
+  const styles = {
+    Pending: { color: "text-orange-500", bg: "bg-orange-100" },
+    Shipped: { color: "text-blue-500", bg: "bg-blue-100" },
+    Delivered: { color: "text-green-500", bg: "bg-green-100" },
+  };
+  return styles[status] || { color: "text-gray-500", bg: "bg-gray-100" };
+};
+
+const generateDate = (index) => {
+  const now = new Date();
+  now.setDate(now.getDate() - index * 3);
+  return now.toISOString().split("T")[0];
+};
 </script>

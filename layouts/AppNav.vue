@@ -11,16 +11,16 @@
       ></span>
       <input
         type="text"
-        placeholder="search"
-        class="lg:w-120 md:w-50 placeholder:text-gray-300 bg-gray-100 px-4 py-2 lg:pl-12 pl-6 rounded shadow-gray-200 outline-none"
+        placeholder="search..."
+        class="lg:w-120 md:w-50 search placeholder:text-gray-300 bg-gray-100 px-4 py-2 lg:pl-12 pl-6 rounded shadow-gray-200 outline-none"
       />
     </div>
     <div class="flex w-100 items-center justify-end gap-x-3">
-      <!-- <DarkModeToggle /> -->
-      <button class="rounded-md px-2 py-1 bg-gray-100 text-gray-400">
+      <DarkModeToggle />
+      <button class="rounded-md btn-icon px-2 py-1 bg-gray-100 text-gray-400">
         <i class="fa-solid fa-bag-shopping fa-md"></i>
       </button>
-      <button class="rounded-md relative px-2 py-1 bg-gray-100 text-gray-400">
+      <button class="rounded-md btn-icon relative px-2 py-1 bg-gray-100 text-gray-400">
         <i class="fa fa-bell fa-md"></i>
         <span class="w-3 top-0 h-3 bg-red-400 absolute z-10 rounded-xl"></span>
       </button>
@@ -33,12 +33,18 @@
             alt="user"
           />
           <div
-            class="z-10 hidden shadow absolute font-bold bg-white rounded-lg w-32 group-focus:block top-full right-0"
+            class="z-10 hidden shadow absolute drop-list font-bold bg-white rounded-lg w-32 group-focus:block top-full right-0"
           >
             <ul class="py-2 text-sm text-gray-400">
-              <li class="py-2"><a href="">Johny Larsen</a></li>
+              <li class="py-2">
+                <nuxt-link
+                    :to="{ name: 'profile' }"
+                  >
+                  Johny Larsen
+                </nuxt-link>
+              </li>
               <li class="py-2"><a href="">settings</a></li>
-              <li class="py-2"><a href="">logout</a></li>
+              <li class="py-2"><a href="" @click="logout">logout</a></li>
             </ul>
           </div>
         </button>
@@ -48,7 +54,17 @@
 </template>
 
 <script setup>
-import DarkModeToggle from "../components/DarkModeToggle.vue";
+import { ref } from "vue";
+import { useRouter } from 'vue-router';
+import { useCookie } from '#app';
+
+const router = useRouter();
+const token = useCookie('auth_token');
+
+const logout = () => {
+  token.value = null; 
+  router.push('/login');
+};
 </script>
 
 <style scoped></style>
