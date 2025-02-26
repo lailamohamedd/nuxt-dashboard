@@ -88,15 +88,18 @@ npm run dev
 ### Deployment
 https://nuxt-dashboard-w5ds.vercel.app/
 ### 📷 Screenshots  
-
 ### 💻 Desktop View  
-![Desktop View](https://github.com/user-attachments/assets/d184d9f9-8bb1-4c56-8ac0-263448997e6a)  
-![Desktop View](https://github.com/user-attachments/assets/795fa3b0-7751-479c-94d7-cc60e24e482d)  
-![Desktop View](https://github.com/user-attachments/assets/1d278306-7e71-4ec2-ab5b-bc7f5615e4f7)  
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/d184d9f9-8bb1-4c56-8ac0-263448997e6a" width="200"/>
+  <img src="https://github.com/user-attachments/assets/795fa3b0-7751-479c-94d7-cc60e24e482d" width="200"/>
+  <img src="https://github.com/user-attachments/assets/1d278306-7e71-4ec2-ab5b-bc7f5615e4f7" width="200"/>
+</p>
 
 ### 📱 Mobile View  
-![Mobile View](https://github.com/user-attachments/assets/d5409301-acd0-4cef-a9ad-20ffe07cdf66)  
-![Mobile View](https://github.com/user-attachments/assets/6b3a6213-593a-4b6d-861b-8e73dd4b6d01)  
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/d5409301-acd0-4cef-a9ad-20ffe07cdf66" width="200"/>
+  <img src="https://github.com/user-attachments/assets/6b3a6213-593a-4b6d-861b-8e73dd4b6d01" width="200"/>
+</p>
 
 ---
 
