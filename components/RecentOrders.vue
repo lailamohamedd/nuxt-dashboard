@@ -1,5 +1,6 @@
 <template>
   <div class="recent-orders lg:px-10 px-6 pb-6 pt-2">
+    <!-- Header section with title and navigation link -->
     <div class="flex justify-between mb-1 items-center">
       <h2 class="mb-3 text-lg font-bold">Recent Orders</h2>
       <NuxtLink to="/orders" class="text-gray-400 py-2 px-3 rounded transition">
@@ -7,6 +8,7 @@
         <i class="fa-solid fa-right-long font fa-sm"></i>
       </NuxtLink>
     </div>
+
     <!-- Orders Table -->
     <div class="card p-6 bg-white shadow-gray-500 rounded-lg overflow-x-auto">
       <table
@@ -22,6 +24,7 @@
           </tr>
         </thead>
         <tbody>
+          <!-- Loop through orders and display each order row -->
           <tr v-for="item in orders" :key="item.id" class="hover:bg-gray-50">
             <td class="px-4 py-3 flex items-center text-gray-800">
               <img
@@ -49,9 +52,9 @@
         </tbody>
       </table>
 
-      <!--  Loading  -->
+      <!-- Loading Indicator -->
       <div v-if="loading" class="p-4 text-center font-bold text-gray-500">
-        Loading ...
+        {{$t('loading')}}
       </div>
     </div>
   </div>
@@ -60,15 +63,18 @@
 <script setup>
 import { ref, onMounted } from "vue";
 
-const orders = ref([]);
-const loading = ref(true);
+const orders = ref([]); // Reactive reference to store fetched orders
+const loading = ref(true); // State to track loading status
 
 onMounted(async () => {
   try {
+    // Fetch data from the API
     const response = await fetch("https://dummyjson.com/products");
     if (!response.ok) throw new Error("Failed to fetch data");
 
     const data = await response.json();
+
+    // Process and map API data to fit order structure
     orders.value = data.products.slice(-3).map((item, index) => {
       const status = getStatus(index);
       const { color, bg } = getStatusStyle(status);
@@ -87,24 +93,39 @@ onMounted(async () => {
   } catch (error) {
     console.error("Error loading orders:", error);
   } finally {
-    loading.value = false;
+    loading.value = false; // Hide loading indicator once data is loaded
   }
 });
 
+/**
+ * Get order status based on index.
+ * @param {number} index - Order index
+ * @returns {string} - Status name
+ */
 const getStatus = (index) => {
   const statuses = ["Pending", "Shipped", "Delivered"];
   return statuses[index % statuses.length];
 };
 
+/**
+ * Get the styling class for order status.
+ * @param {string} status - Order status
+ * @returns {object} - Object containing text color and background class
+ */
 const getStatusStyle = (status) => {
   const styles = {
-    Pending: { color: "text-orange-500", bg: "bg-orange-100" },
-    Shipped: { color: "text-blue-500", bg: "bg-blue-100" },
-    Delivered: { color: "text-green-500", bg: "bg-green-100" },
+    Pending: { color: "text-orange-500", bg: "bg-[oklch(0.75_0.18_56.73/0.12)]" },
+    Shipped: { color: "text-blue-500", bg: "bg-[oklch(0.45_0.2_256.51/0.22)]" },
+    Delivered: { color: "text-green-500", bg: "bg-[oklch(0.77_0.2_152.18/0.14)]" },
   };
   return styles[status] || { color: "text-gray-500", bg: "bg-gray-100" };
 };
 
+/**
+ * Generate a formatted date based on index.
+ * @param {number} index - Order index
+ * @returns {string} - Formatted date string (YYYY-MM-DD)
+ */
 const generateDate = (index) => {
   const now = new Date();
   now.setDate(now.getDate() - index * 3);

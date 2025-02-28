@@ -1,6 +1,9 @@
 <template>
   <div class="card bg-white p-6 shadow-gray-500 rounded-lg">
-    <h2 class="text-xl font-bold text-gray-800">Visits</h2>
+    <!-- Chart Title -->
+    <h2 class="text-xl font-bold text-gray-800">{{ $t('Visits') }}</h2>
+
+    <!-- ApexChart Component for Bar Chart -->
     <apexchart
       type="bar"
       height="350"
@@ -11,64 +14,66 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref } from "vue"; // Import ref for reactive data binding
 
+// Data series for the chart (visit counts per day)
 const series = ref([
   {
-    name: "Visits",
-    data: [120, 200, 150, 80, 170, 210, 140],
+    name: "Visits", // Series name (displayed in the tooltip)
+    data: [120, 200, 150, 80, 170, 210, 140], // Visits for each day
   },
 ]);
 
+// Chart configuration options
 const chartOptions = ref({
   chart: {
-    height: 350,
-    type: "bar",
+    height: 350, // Chart height in pixels
+    type: "bar", // Chart type (bar chart)
   },
   plotOptions: {
     bar: {
-      borderRadius: 5,
-      columnWidth: "45%",
+      borderRadius: 5, // Rounded edges for bars
+      columnWidth: "45%", // Width of each bar relative to available space
       dataLabels: {
-        position: "top",
+        position: "top", // Display data labels at the top of bars
       },
     },
   },
-  colors: ["#1066e9"],
+  colors: ["#1066e9"], // Bar color (blue)
   dataLabels: {
-    enabled: true,
-    formatter: (val) => val + " Visits",
-    offsetY: -20,
+    enabled: true, // Enable labels on top of bars
+    formatter: (val) => val + " Visits", // Format data labels with text
+    offsetY: -20, // Adjust position of data labels
     style: {
-      fontSize: "11px",
-      colors: ["#304758"],
+      fontSize: "11px", // Font size for labels
+      colors: ["#304758"], // Label text color
     },
   },
   xaxis: {
-    categories: ["M", "T", "W", "T", "F", "S", "S"],
-    position: "bottom",
-    axisBorder: { show: false },
-    axisTicks: { show: false },
+    categories: ["M", "T", "W", "T", "F", "S", "S"], // Days of the week
+    position: "bottom", // Position of the x-axis
+    axisBorder: { show: false }, // Hide axis border
+    axisTicks: { show: false }, // Hide axis ticks
     crosshairs: {
       fill: {
         type: "gradient",
         gradient: {
-          colorFrom: "#D8E3F0",
-          colorTo: "#BED1E6",
-          stops: [0, 100],
-          opacityFrom: 0.4,
-          opacityTo: 0.5,
+          colorFrom: "#D8E3F0", // Light blue gradient start
+          colorTo: "#BED1E6", // Light blue gradient end
+          stops: [0, 100], // Gradient stops
+          opacityFrom: 0.4, // Start opacity
+          opacityTo: 0.5, // End opacity
         },
       },
     },
-    tooltip: { enabled: true },
+    tooltip: { enabled: true }, // Enable tooltip on hover
   },
   yaxis: {
-    axisBorder: { show: false },
-    axisTicks: { show: false },
+    axisBorder: { show: false }, // Hide y-axis border
+    axisTicks: { show: false }, // Hide y-axis ticks
     labels: {
-      show: false,
-      formatter: (val) => val + " Visits",
+      show: false, // Hide y-axis labels
+      formatter: (val) => val + " Visits", // Format y-axis labels (if enabled)
     },
   },
 });

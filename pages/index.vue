@@ -1,8 +1,12 @@
 <template>
-  <div class="ml-0 sm:ml-32 md:ml-70">
+  <div
+    :class="{
+      'ml-0 sm:ml-32 md:ml-70': !isRtl,
+      'mr-0 sm:mr-32 md:mr-70': isRtl
+    }">
     <!-- Start Analytics -->
     <div class="analysis">
-      <h2 class="mx-5 pt-7 pb-0 text-lg font-bold">Analytics</h2>
+      <h2 class="mx-10 pt-7 pb-0 text-lg font-bold">{{ $t('Analytics') }}</h2>
       <AnalyticsCards />
     </div>
     <!-- End Analytics -->
@@ -26,11 +30,14 @@ import AnalyticsCards from "~/components/AnalyticsCards.vue";
 import AreaChart from "~/components/charts/AreaChart.vue";
 import BarChart from "~/components/charts/BarChart.vue";
 import RecentOrders from "~/components/RecentOrders.vue";
-const userData = useCookie("user");
+import { computed } from 'vue';
+import { useI18n } from 'vue-i18n';
 
-useCookie("use", {
-  maxAge: 60 * 60 * 24,
-}).value = "New Value"
-console.log(userData.value)
+const { locale } = useI18n();
+const isRtl = computed(() => locale.value === 'ar'); 
+// Define middleware for protected route
+// definePageMeta({
+//   middleware: "protected",
+// });
 </script>
 <style scoped></style>

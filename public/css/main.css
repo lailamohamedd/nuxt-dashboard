@@ -1,27 +1,39 @@
+/* Import Tailwind CSS framework */
 @import "tailwindcss";
+
+/* Default light mode styles for body */
 body {
   @apply bg-gray-100 text-gray-600 transition-colors duration-300;
 }
 
+/* Dark mode styles for body */
 .dark body {
   @apply bg-gray-900 text-gray-50;
 }
 
+/* Dark mode styles for various UI elements */
 .dark table,
 .dark .card,
 .dark .card h2,
-.dark .card .apexcharts-menu,
+.dark .card .apexcharts-menu, /* ApexCharts dropdown menu */
 .dark .drop-list,
 .dark nav, 
-.dark .sidebar {
+.dark .sidebar,
+.dark .report-card {
   @apply bg-gray-800 text-gray-300;
 }
+
+/* Styling the ApexCharts menu inside cards in dark mode */
 .dark .card .apexcharts-menu {
-  @apply border-gray-800 shadow-md
+  @apply border-gray-800 shadow-md;
 }
+
+/* Ensuring text elements inside ApexCharts remain visible in dark mode */
 .dark .card text {
-  fill: rgb(221, 220, 220) !important
+  fill: rgb(221, 220, 220) !important;
 }
+
+/* Styling headers, search inputs, and pagination buttons in dark mode */
 .dark thead tr,
 .dark nav button.btn-icon,
 .dark .search,
@@ -29,17 +41,31 @@ body {
   @apply bg-gray-900 text-gray-200;
 }
 
+/* Text adjustments for various elements in dark mode */
 .dark body td,
-.dark .sidebar h1 {
+.dark .sidebar h1,
+.dark .login-card label,
+.dark .login-card p {
   @apply text-gray-200;
 }
+
+/* Highlighting active links and the first sidebar item in dark mode */
 .dark .sidebar .router-link-exact-active,
 .dark .sidebar li:first-child {
-  @apply bg-blue-950 text-blue-100
+  @apply bg-blue-950 text-blue-100;
 }
+
+/* Styling horizontal rule inside the sidebar */
 .dark .sidebar hr {
-  @apply border-gray-700
+  @apply border-gray-700;
 }
+
+/* Hover effect for table rows in dark mode */
 .dark tbody tr:hover {
   @apply bg-gray-900 text-gray-200;
+}
+
+/* Styling input fields inside the login card in dark mode */
+.dark .login-card input {
+  @apply border-gray-600;
 }
