@@ -16,6 +16,11 @@
 </template>
 
 <script setup>
+const authSTore=useAuthStore();
+onMounted(async()=>{
+  await authSTore.getUser();
+
+})
 import AppNav from "./AppNav.vue"; // Importing the top navigation component
 import Sidebar from "./Sidebar.vue"; // Importing the sidebar navigation component
 </script>

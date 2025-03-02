@@ -13,6 +13,7 @@
 
     <!-- Display error message -->
     <h3 class="my-5">{{ error.statusMessage }}</h3>
+    {{ error }}
 
     <!-- Button to redirect back to home -->
     <button

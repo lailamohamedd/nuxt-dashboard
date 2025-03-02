@@ -4,7 +4,7 @@
 import tailwindcss from "@tailwindcss/vite";
 
 export default defineNuxtConfig({
-  ssr: false,
+  // ssr: false,
   // Compatibility date for Nuxt features and updates
   compatibilityDate: "2024-11-01",
 
@@ -20,7 +20,6 @@ export default defineNuxtConfig({
   // Define Nuxt plugins and their mode (client-side only)
   plugins: [
     { src: '~/plugins/vue-apexcharts', mode: 'client' }, // Client-side only plugin
-    '~/plugins/i18n.js', // This will run on both client and server
   ],
 
   // Runtime configuration for secure environment variables
@@ -99,5 +98,20 @@ export default defineNuxtConfig({
   },
 
   // Nuxt modules to be used in the project
-  modules: ['@pinia/nuxt'], // State management with Pinia
+  modules: ['@pinia/nuxt','@nuxtjs/i18n'], 
+  i18n: {
+    lazy: true,
+    langDir: "./locales",
+    strategy: "no_prefix",
+
+    defaultLocale: "en",
+    locales: [
+      { code: "en", name: "English", file: "en.json", dir: "ltr" },
+      { code: "ar", name: "Arabic", file: "ar.json", dir: "rtl" },
+    ],
+    vueI18n: "./i18n.config.ts",
+
+    differentDomains: false,
+  },// State management with Pinia
+  ssr:false
 });

@@ -60,8 +60,8 @@
           <ul class="py-2 text-sm text-gray-400">
             <li class="px-3 py-2 text-center"><NuxtLink to="/profile">{{ $t('Profile') }}</NuxtLink></li>
             <!-- Show only logout button if user is authenticated -->
-            <li v-if="isAuthenticated" class="px-3 py-2 text-center">
-            <button @click="handleLogout" class="px-4 py-2 cursor-pointer">
+            <li class="px-3 py-2 text-center">
+            <button @click="logout" class="px-4 py-2 cursor-pointer">
               {{ $t('Logout') }}
             </button>
           </li>
@@ -73,17 +73,12 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';
-import { useAuthStore } from '@/stores/auth';
-import { useRoute } from 'vue-router';
 import { onClickOutside } from '@vueuse/core';
-import { useRouter } from 'vue-router';
-import { useI18n } from "vue-i18n";
 
 const { locale } = useI18n();
-const isRtl = computed(() => locale.value === "ar"); 
+const isRtl = computed(() => locale.value === 'ar');
 const router = useRouter();
-
+const token = useCookie("token");
 const authStore = useAuthStore();
 const isDropdownOpen = ref(false);
 const dropdown = ref(null);
@@ -95,13 +90,11 @@ const isLoginPage = computed(() => route.path === '/auth/login');
 const toggleDropdown = () => {
   isDropdownOpen.value = !isDropdownOpen.value;
 };
-
-const handleLogout = () => {
-  authStore.logout(); // Call logout function from auth store
-};
-
 onClickOutside(dropdown, () => {
   isDropdownOpen.value = false;
 });
 
+const logout = () => {
+  authStore.logout();
+};
 </script>

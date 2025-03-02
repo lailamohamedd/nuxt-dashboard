@@ -2,25 +2,33 @@
   <div class="recent-orders lg:px-10 px-6 pb-6 pt-2">
     <!-- Header section with title and navigation link -->
     <div class="flex justify-between mb-1 items-center">
-      <h2 class="mb-3 text-lg font-bold">Recent Orders</h2>
+      <h2 class="mb-3 text-lg font-bold">{{ $t('RecentOrders') }}</h2>
       <NuxtLink to="/orders" class="text-gray-400 py-2 px-3 rounded transition">
-        Go to Orders Page
-        <i class="fa-solid fa-right-long font fa-sm"></i>
+        {{ $t('Go_Orders_Page') }}
+        <i class="fa-solid font fa-sm " 
+          :class="{
+            'fa-left-long': isRtl,
+            'fa-right-long': !isRtl
+          }"></i>
       </NuxtLink>
     </div>
 
     <!-- Orders Table -->
     <div class="card p-6 bg-white shadow-gray-500 rounded-lg overflow-x-auto">
       <table
-        class="w-full border-collapse bg-white text-left text-sm text-gray-400"
+        class="w-full border-collapse bg-white text-sm text-gray-400"
+        :class="{
+            'text-right': isRtl,
+            'text-left': !isRtl
+          }"
       >
         <thead>
           <tr class="bg-gray-100 text-gray-400">
-            <th class="px-4 py-3">Item Name</th>
-            <th class="px-4 py-3">Qity</th>
-            <th class="px-4 py-3">Order Date</th>
-            <th class="px-4 py-3">Amount</th>
-            <th class="px-4 py-3">Status</th>
+            <th class="px-4 py-3">{{ $t('ItemName') }}</th>
+            <th class="px-4 py-3">{{ $t('Qity') }}</th>
+            <th class="px-4 py-3">{{ $t('OrderDate') }}</th>
+            <th class="px-4 py-3">{{$t('Amount')}}</th>
+            <th class="px-4 py-3">{{ $t('Status') }}</th>
           </tr>
         </thead>
         <tbody>
@@ -61,11 +69,12 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
-
+import { ref, onMounted, computed } from "vue";
+import { useI18n } from "vue-i18n";
 const orders = ref([]); // Reactive reference to store fetched orders
 const loading = ref(true); // State to track loading status
-
+const { locale } = useI18n();
+const isRtl = computed(() => locale.value === "ar");
 onMounted(async () => {
   try {
     // Fetch data from the API

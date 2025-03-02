@@ -15,15 +15,11 @@
 </template>
 
 <script setup>
-// Importing the AreaChart component from the charts directory
 import AreaChart from "~/components/charts/AreaChart.vue";
-import { computed } from 'vue';
-import { useI18n } from 'vue-i18n';
-
 const { locale } = useI18n();
 const isRtl = computed(() => locale.value === 'ar');
-// Defining page metadata to enforce authentication before accessing this page
-// definePageMeta({
-//   middleware: "protected", // Ensures only authenticated users can access this page
-// });
+
+definePageMeta({
+  middleware: "auth",
+});
 </script>

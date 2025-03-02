@@ -35,15 +35,19 @@
 
       <!-- Orders Table -->
       <table
-        class="w-full border-collapse bg-white text-left text-sm text-gray-400"
+        class="w-full border-collapse bg-white text-sm text-gray-400"
+        :class="{
+            'text-right': isRtl,
+            'text-left': !isRtl
+          }"
       >
         <thead>
           <tr class="bg-gray-100 text-gray-400">
-            <th class="px-4 py-3">Item Name</th>
-            <th class="px-4 py-3">Qity</th>
-            <th class="px-4 py-3">Order Date</th>
-            <th class="px-4 py-3">Amount</th>
-            <th class="px-4 py-3">Status</th>
+            <th class="px-4 py-3">{{ $t('ItemName') }}</th>
+            <th class="px-4 py-3">{{$t('Qity')}}</th>
+            <th class="px-4 py-3">{{ $t('OrderDate') }}</th>
+            <th class="px-4 py-3">{{ $t('Amount') }}</th>
+            <th class="px-4 py-3">{{ $t('Status') }}</th>
           </tr>
         </thead>
         <tbody>
@@ -114,8 +118,6 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from "vue";
-import { useI18n } from "vue-i18n";
 
 const orders = ref([]); // Stores the fetched order data
 const searchQuery = ref(""); // Stores the search query
@@ -197,7 +199,7 @@ const getStatusClass = (status) => {
 };
 
 // Define middleware for protected route
-// definePageMeta({
-//   middleware: "protected",
-// });
+definePageMeta({
+  middleware: "auth",
+});
 </script>

@@ -14,67 +14,68 @@
 </template>
 
 <script setup>
-import { ref } from "vue"; // Import ref for reactive data binding
+import { ref, watch } from "vue";
+import { useI18n } from "vue-i18n";
 
-// Data series for the chart (visit counts per day)
+const { t, locale } = useI18n(); 
 const series = ref([
   {
-    name: "Visits", // Series name (displayed in the tooltip)
-    data: [120, 200, 150, 80, 170, 210, 140], // Visits for each day
+    name: t("Visits"), 
+    data: [120, 200, 150, 80, 170, 210, 140],
   },
 ]);
 
-// Chart configuration options
 const chartOptions = ref({
   chart: {
-    height: 350, // Chart height in pixels
-    type: "bar", // Chart type (bar chart)
+    height: 350,
+    type: "bar",
+    toolbar: { show: false }, 
   },
   plotOptions: {
     bar: {
-      borderRadius: 5, // Rounded edges for bars
-      columnWidth: "45%", // Width of each bar relative to available space
+      borderRadius: 5,
+      columnWidth: "45%",
       dataLabels: {
-        position: "top", // Display data labels at the top of bars
+        position: "top",
       },
     },
   },
-  colors: ["#1066e9"], // Bar color (blue)
+  colors: ["#1066e9"],
   dataLabels: {
-    enabled: true, // Enable labels on top of bars
-    formatter: (val) => val + " Visits", // Format data labels with text
-    offsetY: -20, // Adjust position of data labels
+    enabled: true,
+    formatter: (val) => `${val} ${t("Visits")}`, 
+    offsetY: -20,
     style: {
-      fontSize: "11px", // Font size for labels
-      colors: ["#304758"], // Label text color
+      fontSize: "11px",
+      colors: ["#304758"],
     },
   },
   xaxis: {
-    categories: ["M", "T", "W", "T", "F", "S", "S"], // Days of the week
-    position: "bottom", // Position of the x-axis
-    axisBorder: { show: false }, // Hide axis border
-    axisTicks: { show: false }, // Hide axis ticks
-    crosshairs: {
-      fill: {
-        type: "gradient",
-        gradient: {
-          colorFrom: "#D8E3F0", // Light blue gradient start
-          colorTo: "#BED1E6", // Light blue gradient end
-          stops: [0, 100], // Gradient stops
-          opacityFrom: 0.4, // Start opacity
-          opacityTo: 0.5, // End opacity
-        },
-      },
-    },
-    tooltip: { enabled: true }, // Enable tooltip on hover
+    categories: ["M", "T", "W", "T", "F", "S", "S"],
+    position: "bottom",
+    axisBorder: { show: false },
+    axisTicks: { show: false },
+    tooltip: { enabled: true },
   },
   yaxis: {
-    axisBorder: { show: false }, // Hide y-axis border
-    axisTicks: { show: false }, // Hide y-axis ticks
+    axisBorder: { show: false },
+    axisTicks: { show: false },
     labels: {
-      show: false, // Hide y-axis labels
-      formatter: (val) => val + " Visits", // Format y-axis labels (if enabled)
+      show: false,
+      formatter: (val) => `${val} ${t("Visits")}`, 
     },
   },
+});
+
+watch(locale, () => {
+  series.value = [
+    {
+      name: t("visits"),
+      data: [120, 200, 150, 80, 170, 210, 140],
+    },
+  ];
+  
+  chartOptions.value.dataLabels.formatter = (val) => `${val} ${t("Visits")}`;
+  chartOptions.value.yaxis.labels.formatter = (val) => `${val} ${t("Visits")}`;
 });
 </script>

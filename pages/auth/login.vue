@@ -7,21 +7,21 @@
         {{ errorMessage }}
       </div>
 
-      <form @submit.prevent="handleLogin" class="space-y-4">
+      <form @submit.prevent="login" class="space-y-4">
         <div>
-          <label for="email" class="block text-sm font-medium text-gray-600">{{$t('email')}}</label>
+          <label for="username" class="block text-sm mb-2 font-medium text-gray-600">{{$t('username')}}</label>
           <input 
-            v-model="email" 
-            type="email" 
-            id="email" 
-            :placeholder="$t('Enter_your_email')"
+            v-model="username" 
+            type="text" 
+            id="username" 
+            :placeholder="$t('Enter_your_username')"
             required
             class="w-full px-4 py-2 border rounded-lg focus:ring focus:ring-blue-400"
           />
         </div>
 
         <div>
-          <label for="password" class="block text-sm font-medium text-gray-600">{{ $t('Password') }}</label>
+          <label for="password" class="block text-sm mb-2 font-medium text-gray-600">{{ $t('Password') }}</label>
           <input 
             v-model="password" 
             type="password" 
@@ -50,61 +50,16 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
-import { useRouter } from "vue-router";
-
 const email = ref("");
 const password = ref("");
 const loading = ref(false);
 const errorMessage = ref("");
 const router = useRouter();
+const username = ref("");
+const auth = useAuthStore();
 
-/**
- * Handle user login process
- * - Fetches users from dummy API
- * - Matches email & password
- * - Generates a Fake JWT token (Base64)
- * - Stores it in localStorage
- */
-const handleLogin = async () => {
-  errorMessage.value = "";
-  loading.value = true;
-
-  try {
-    // Fetch all users from dummy API
-    const res = await fetch("https://dummyjson.com/users");
-    const users = await res.json();
-
-    // Find user by email and password
-    const user = users.users.find(
-      (u) => u.email === email.value && u.password === password.value
-    );
-
-    if (user) {
-      // 🔹 Create a Fake JWT Token (Base64 Encoding)
-      const payload = {
-        id: user.id,
-        email: user.email,
-        name: user.firstName,
-        exp: Math.floor(Date.now() / 1000) + 3600, // Expires in 1 hour
-      };
-
-      // Convert the payload to a Base64 string (Simulated JWT)
-      const token = btoa(JSON.stringify(payload));
-
-      // Store token in localStorage
-      localStorage.setItem("token", token);
-
-      alert("Login successful!");
-      router.push("/profile");
-    } else {
-      errorMessage.value = "Invalid email or password";
-    }
-  } catch (err) {
-    errorMessage.value = "An error occurred while logging in";
-    console.error(err);
-  } finally {
-    loading.value = false;
-  }
-};
+const login = async () => {
+  
+  auth.login({ username: username.value, password: password.value });
+}
 </script>

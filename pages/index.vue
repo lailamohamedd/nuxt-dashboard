@@ -26,18 +26,11 @@
   </div>
 </template>
 <script setup>
-import AnalyticsCards from "~/components/AnalyticsCards.vue";
-import AreaChart from "~/components/charts/AreaChart.vue";
-import BarChart from "~/components/charts/BarChart.vue";
-import RecentOrders from "~/components/RecentOrders.vue";
-import { computed } from 'vue';
-import { useI18n } from 'vue-i18n';
-
 const { locale } = useI18n();
 const isRtl = computed(() => locale.value === 'ar'); 
-// Define middleware for protected route
-// definePageMeta({
-//   middleware: "protected",
-// });
+
+definePageMeta({
+  middleware: "auth",
+});
 </script>
 <style scoped></style>

@@ -55,7 +55,11 @@
             :to="{ name: 'messages' }"
           >
             <span>
-              <i class="fa-solid fa-comment-dots fa-lg " :class="[isRtl ? 'ml-3' : 'mr-3']"></i>
+              <i class="fa-solid fa-comment-dots fa-lg "
+                :class="{
+                'ml-3': isRtl,
+                'mr-3': !isRtl
+              }"></i>
               {{ $t("Messages") }}
             </span>
             <span class="h-4 w-4 bg-red-400 rounded-2xl mx-2"></span>
@@ -69,7 +73,11 @@
             active-class="bg-blue-50 text-blue-500 rounded active:hover:bg-blue-50 active:hover:text-blue-500"
             :to="{ name: 'support' }"
           >
-            <i class="fa-regular fa-life-ring fa-lg " :class="[isRtl ? 'ml-3' : 'mr-3']"></i>
+            <i class="fa-regular fa-life-ring fa-lg "
+            :class="{
+              'ml-3': isRtl,
+              'mr-3': !isRtl
+            }"></i>
             {{ $t("Support") }}
           </nuxt-link>
         </li>
@@ -81,7 +89,11 @@
             active-class="bg-blue-50 text-blue-500 rounded active:hover:bg-blue-50 active:hover:text-blue-500"
             :to="{ name: 'settings' }"
           >
-            <i class="fa-solid fa-gear fa-lg " :class="[isRtl ? 'ml-3' : 'mr-3']"></i>
+            <i class="fa-solid fa-gear fa-lg "
+            :class="{
+              'ml-3': isRtl,
+              'mr-3': !isRtl
+            }"></i>
             {{ $t("Settings") }}
           </nuxt-link>
         </li>
@@ -99,34 +111,21 @@
 </template>
 
 <script setup>
-import { ref, computed, watch } from "vue";
-import { useRoute } from "vue-router";
-
 const isSidebarOpen = ref(false); // Sidebar visibility on mobile
 const route = useRoute();
-
 // ✅ Check if the current route is the login page
 const isLoginPage = computed(() => route.path === "/auth/login");
 
-// ✅ Get direction from document (Set in i18n.js)
-
-import { useI18n } from "vue-i18n";
-
 const { locale } = useI18n();
+const isRtl = computed(() => locale.value === 'ar');
+const { t } = useI18n();
 
-const isRtl = computed(() => {
-  return locale.value === "ar" || document.documentElement.dir === "rtl";
-});
-
-watch(locale, (newLocale) => {
-  document.documentElement.setAttribute("dir", newLocale === "ar" ? "rtl" : "ltr");
-});
 // Sidebar menu items
-const menuItems = ref([
-  { name: "Dashboard", icon: "fa-home", link: "index" },
-  { name: "Orders", icon: "fa-cart-shopping", link: "orders" },
-  { name: "Items", icon: "fa-store", link: "items" },
-  { name: "Transactions", icon: "fa-file", link: "transactions" },
-  { name: "Reports", icon: "fa-file-pdf", link: "reports" },
+const menuItems = computed(() => [
+  { name: t("dashboard"), icon: "fa-home", link: "index" },
+  { name: t("orders"), icon: "fa-cart-shopping", link: "orders" },
+  { name: t("Items"), icon: "fa-store", link: "items" },
+  { name: t("Transactions"), icon: "fa-file", link: "transactions" },
+  { name: t("Reports"), icon: "fa-file-pdf", link: "reports" },
 ]);
 </script>
