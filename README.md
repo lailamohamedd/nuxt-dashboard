@@ -29,10 +29,13 @@ This project is a **modern, responsive admin dashboard** built with **Nuxt.js**.
 - Dashboard  
 - Orders  
 - Items  
-- Transactions  
-- Reports  
+- Transactions
+- Reports
+- Messages
+- Support
+- Settings
 
-✅ **Top Navbar** – Displays the app name/logo, user avatar, and optional settings/logout menu.  
+✅ **Top Navbar** – Displays the app name/logo, user avatar, theme mode button, change languages of theme button, and optional profile/logout menu.  
 
 ### **📊 Dashboard Content**  
 ✅ **Analytics Cards** – Displays key business metrics:  
@@ -60,8 +63,14 @@ This project is a **modern, responsive admin dashboard** built with **Nuxt.js**.
 - 📂 **pages/** – Main dashboard and orders page
 - 📂 **layouts/** – Reusable layout (sidebar + navbar)
 - 📂 **components/** – UI elements like cards, charts, and tables
+- 📂 **i18n/** – arabic and english json data files
+- 📂 **middleware/** – authentication pages
 - 📂 **public/** – Static public assets
 - 📂 **plugins/** – Nuxt plugins
+- 📂 **stores/** – pinia
+- 📂 **app.vue/** 
+- 📂 **error.vue/** 
+- 📜 **i18n.config.ts** 
 - 📜 **nuxt.config.ts** – Nuxt configuration file
 - 📜 **package.json** – Project dependencies and scripts
 - 📜 **README.md** – Project documentation
@@ -87,15 +96,16 @@ npm run dev
  
 ### Deployment
 **Live Demo** https://nuxt-dashboard-w5ds.vercel.app/
+
 ### 📷 Screenshots  
-### 💻 Desktop View  
+## 💻 Desktop View  
 <p align="center">
   <img src="https://github.com/user-attachments/assets/d184d9f9-8bb1-4c56-8ac0-263448997e6a" width="200"/>
   <img src="https://github.com/user-attachments/assets/795fa3b0-7751-479c-94d7-cc60e24e482d" width="200"/>
   <img src="https://github.com/user-attachments/assets/1d278306-7e71-4ec2-ab5b-bc7f5615e4f7" width="200"/>
 </p>
 
-### 📱 Mobile View  
+## 📱 Mobile View  
 <p align="center">
   <img src="https://github.com/user-attachments/assets/d5409301-acd0-4cef-a9ad-20ffe07cdf66" width="200"/>
   <img src="https://github.com/user-attachments/assets/6b3a6213-593a-4b6d-861b-8e73dd4b6d01" width="200"/>
