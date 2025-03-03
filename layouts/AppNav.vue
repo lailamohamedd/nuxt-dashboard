@@ -31,7 +31,7 @@
     </div>
 
     <div class="flex w-100 items-center justify-end gap-x-3">
-      <LanguageToggle />
+      <!-- <LanguageToggle /> -->
 
       <DarkModeToggle />
       
@@ -61,7 +61,7 @@
             <li class="px-3 py-2 text-center"><NuxtLink to="/profile">{{ $t('Profile') }}</NuxtLink></li>
             <!-- Show only logout button if user is authenticated -->
             <li class="px-3 py-2 text-center">
-            <button @click="logout" class="px-4 py-2 cursor-pointer">
+            <button @click="logout" class="px-1 py-2 cursor-pointer">
               {{ $t('Logout') }}
             </button>
           </li>

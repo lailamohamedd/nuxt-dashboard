@@ -43,7 +43,7 @@
 
       <p class="text-sm text-gray-600 text-center mt-4">
         {{ $t('Don_have_account') }}
-        <NuxtLink to="" class="text-blue-500 hover:underline">{{ $t('Sign_up_here') }}</NuxtLink>
+        <NuxtLink to="" class="text-blue-400 hover:underline">{{ $t('Sign_up_here') }}</NuxtLink>
       </p>
     </div>
   </div>
