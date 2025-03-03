@@ -26,6 +26,8 @@
   </div>
 </template>
 <script setup>
+import AreaChart from "~/components/charts/AreaChart.vue";
+import BarChart from "~/components/charts/BarChart.vue";
 const { locale } = useI18n();
 const isRtl = computed(() => locale.value === 'ar'); 
 
