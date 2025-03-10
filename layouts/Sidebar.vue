@@ -5,7 +5,7 @@
     <button
       @click="isSidebarOpen = !isSidebarOpen"
       class="md:hidden mt-3 absolute cursor-pointer text-gray-800 py-2 px-4 rounded z-50"
-      :class="isRtl ? 'right-3' : 'left-3'"
+      :class="language === 'ar' ? 'right-3' : 'left-3'"
     >
       <i class="fa-solid fa-bars text-xl text-gray-400"></i>
     </button>
@@ -13,15 +13,17 @@
     <!-- Sidebar Container -->
     <div
       :class="[
-        'sidebar w-70 bg-white shadow h-full px-5 py-2 fixed top-0 transition-transform duration-300 z-50',
-        isSidebarOpen ? 'translate-x-0' : isRtl ? 'translate-x-70' : '-translate-x-70', // Toggle sidebar visibility on mobile
-        isRtl ? 'right-0' : 'left-0', // Position dynamically
-        'md:translate-x-0', // Always visible on larger screens
+        'sidebar w-70 bg-white shadow h-full px-5 py-2 fixed top-0 transition-transform duration-300 md:translate-x-0 z-50 translate-x-70 ',
+        isSidebarOpen ? 'translate-x-0' : 'translate-x-70',
+        language === 'ar' ? 'right-0' : 'left-0',
       ]"
     >
       <!-- Sidebar Header -->
       <div class="my-2 flex items-center pb-2">
-        <i class="fa-solid fa-layer-group mr-3 fa-xl text-blue-500"></i>
+        <i
+          class="fa-solid fa-layer-group fa-xl text-blue-500"
+          :class="language === 'ar' ? 'ml-3' : 'mr-3'"
+        ></i>
         <h1 class="text-2xl text-center text-gray-800 font-bold">
           Manager <span class="text-blue-500">Pro</span>
         </h1>
@@ -39,7 +41,14 @@
             active-class="bg-blue-50 text-blue-500 rounded active:hover:bg-blue-50 active:hover:text-blue-500"
             :to="{ name: item.link }"
           >
-          <i :class="['fa-solid', item.icon, 'fa-lg', isRtl ? 'ml-3' : 'mr-3']"></i>
+            <i
+              :class="[
+                'fa-solid',
+                item.icon,
+                'fa-lg',
+                language === 'ar' ? 'ml-3' : 'mr-3',
+              ]"
+            ></i>
 
             {{ item.name }}
           </nuxt-link>
@@ -55,11 +64,10 @@
             :to="{ name: 'messages' }"
           >
             <span>
-              <i class="fa-solid fa-comment-dots fa-lg "
-                :class="{
-                'ml-3': isRtl,
-                'mr-3': !isRtl
-              }"></i>
+              <i
+                class="fa-solid fa-comment-dots fa-lg"
+                :class="language === 'ar' ? 'ml-3' : 'mr-3'"
+              ></i>
               {{ $t("Messages") }}
             </span>
             <span class="h-4 w-4 bg-red-400 rounded-2xl mx-2"></span>
@@ -73,11 +81,10 @@
             active-class="bg-blue-50 text-blue-500 rounded active:hover:bg-blue-50 active:hover:text-blue-500"
             :to="{ name: 'support' }"
           >
-            <i class="fa-regular fa-life-ring fa-lg "
-            :class="{
-              'ml-3': isRtl,
-              'mr-3': !isRtl
-            }"></i>
+            <i
+              class="fa-regular fa-life-ring fa-lg"
+              :class="language === 'ar' ? 'ml-3' : 'mr-3'"
+            ></i>
             {{ $t("Support") }}
           </nuxt-link>
         </li>
@@ -89,11 +96,10 @@
             active-class="bg-blue-50 text-blue-500 rounded active:hover:bg-blue-50 active:hover:text-blue-500"
             :to="{ name: 'settings' }"
           >
-            <i class="fa-solid fa-gear fa-lg "
-            :class="{
-              'ml-3': isRtl,
-              'mr-3': !isRtl
-            }"></i>
+            <i
+              class="fa-solid fa-gear fa-lg"
+              :class="language === 'ar' ? 'ml-3' : 'mr-3'"
+            ></i>
             {{ $t("Settings") }}
           </nuxt-link>
         </li>
@@ -113,11 +119,9 @@
 <script setup>
 const isSidebarOpen = ref(false); // Sidebar visibility on mobile
 const route = useRoute();
-// ✅ Check if the current route is the login page
 const isLoginPage = computed(() => route.path === "/auth/login");
-
 const { locale } = useI18n();
-const isRtl = computed(() => locale.value === 'ar');
+const language = computed(() => locale.value);
 const { t } = useI18n();
 
 // Sidebar menu items

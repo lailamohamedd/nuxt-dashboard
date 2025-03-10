@@ -32,11 +32,12 @@
 </template>
 
 <script setup>
-import { ref, computed, watch } from "vue";
+import { computed } from "vue";
 import { useI18n } from "vue-i18n";
 
-const { t, locale } = useI18n();
+const { t } = useI18n(); // تفعيل الترجمة
 
+// تعريف بيانات البطاقات مع الترجمة
 const cards = computed(() => [
   {
     title: t("TotalRevenue"),
@@ -73,8 +74,4 @@ const cards = computed(() => [
     textColor: "text-red-400",
   },
 ]);
-
-watch(locale, () => {
-  // Trigger reactivity by updating the computed property
-});
 </script>

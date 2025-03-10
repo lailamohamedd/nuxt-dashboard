@@ -3,12 +3,13 @@
     <!-- Loading Spinner -->
     <div
       v-if="loading"
-      class="flex flex-col items-center justify-center min-h-screen text-gray-400"
+      class="flex flex-col items-center justify-center min-h-screen"
     >
-      <div
-        class="w-8 h-8 border-4 border-gray-300 border-t-blue-500 rounded-full animate-spin"
-      ></div>
-      <p class="mt-3 text-lg font-semibold">{{ $t("loading") }}</p>
+      <div class="relative flex items-center justify-center">
+        <div class="w-16 h-16 border-4 border-gray-300 border-t-blue-500 rounded-full animate-spin"></div>
+        <div class="absolute w-12 h-12 border-4 border-gray-300 border-b-blue-500 rounded-full animate-ping"></div>
+      </div>
+      <p class="mt-4 text-lg font-semibold animate-pulse">{{ $t("loading") }}...</p>
     </div>
 
     <!-- User Profile Card -->
@@ -16,10 +17,9 @@
     <div
       v-if="user"
       class="flex items-center justify-center min-h-screen overflow-x-auto"
-      :class="{
-        'ml-0 sm:ml-32 md:ml-70': !isRtl,
-        'mr-0 sm:mr-32 md:mr-70': isRtl,
-      }"
+      :class="
+        language === 'ar' ? 'mr-0 sm:mr-32 md:mr-70' : 'ml-0 sm:ml-32 md:ml-70'
+      "
     >
       <div
         class="bg-white card shadow-md rounded-lg p-6 w-full max-w-md text-gray-800"
@@ -57,7 +57,6 @@
         </div>
       </div>
     </div>
-
     <!-- Error Message if User Not Found -->
     <div
       v-else
@@ -69,6 +68,8 @@
 </template>
 
 <script setup>
+const { locale } = useI18n();
+const language = computed(() => locale.value);
 const router = useRouter();
 const user = ref({});
 const loading = ref(true);

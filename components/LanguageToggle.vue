@@ -1,45 +1,38 @@
 <template>
-  <div>
-    <button class="cursor-pointer font-bold" @click="toggleLanguage">
-      {{ selectedLang === "en" ? "AR" : "EN" }}
-    </button>
+  <div class="langs_toggle">
+    <select class="cursor-pointer outline-0 p-1 bg-white" v-model="language">
+      <option
+        class="cursor-pointer outline-0 px-3"
+        v-for="item in locales"
+        :key="typeof item === 'object' ? item.code : item"
+        :value="typeof item === 'object' ? item.code : item"
+      >
+        {{ typeof item === "object" ? item.name : item }}
+      </option>
+    </select>
   </div>
 </template>
 
 <script setup>
-import { useI18n } from "#imports";
-import { useHead } from "#imports";
-import { ref, watch, onMounted } from "vue";
+import { computed } from "vue";
+import { useI18n } from "vue-i18n";
 
-const { locale } = useI18n();
+const { locales, locale, setLocale } = useI18n();
 
-const savedLang = localStorage.getItem("locale") || locale.value;
-const selectedLang = ref(savedLang);
-
-locale.value = selectedLang.value;
-
-const updateHtmlAttributes = () => {
-  document.documentElement.lang = selectedLang.value;
-  document.documentElement.dir = selectedLang.value === "ar" ? "rtl" : "ltr";
-};
-
-watch(selectedLang, (newLang) => {
-  locale.value = newLang;
-  localStorage.setItem("locale", newLang);
-  updateHtmlAttributes();
-});
-
-onMounted(() => {
-  document.documentElement.lang = selectedLang.value;
-});
-
-useHead({
-  htmlAttrs: {
-    lang: selectedLang,
+const language = computed({
+  get: () => locale.value,
+  set: (value) => {
+    setLocale(value);
+    localStorage.setItem("locale", value);
+    document.documentElement.lang = value;
+    document.documentElement.dir = value === "ar" ? "rtl" : "ltr";
   },
 });
 
-const toggleLanguage = () => {
-  selectedLang.value = selectedLang.value === "en" ? "ar" : "en";
-};
+const savedLang = localStorage.getItem("locale");
+if (savedLang && locales.value.map((l) => l.code).includes(savedLang)) {
+  setLocale(savedLang);
+  document.documentElement.lang = savedLang;
+  document.documentElement.dir = savedLang === "ar" ? "rtl" : "ltr";
+}
 </script>

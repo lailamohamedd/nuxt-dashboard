@@ -1,7 +1,7 @@
 <template>
   <div class="card bg-white p-6 shadow-gray-500 rounded-lg">
     <!-- Chart Title -->
-    <h2 class="text-xl font-bold text-gray-800">{{ $t('Visits') }}</h2>
+    <h2 class="text-xl font-bold text-gray-800">{{ t('Visits') }}</h2>
 
     <!-- ApexChart Component for Bar Chart -->
     <apexchart
@@ -17,14 +17,17 @@
 import { ref, watch } from "vue";
 import { useI18n } from "vue-i18n";
 
-const { t, locale } = useI18n(); 
+const { t, locale } = useI18n(); // تفعيل الترجمة
+
+// بيانات المخطط
 const series = ref([
   {
-    name: t("Visits"), 
+    name: t('Visits'), 
     data: [120, 200, 150, 80, 170, 210, 140],
   },
 ]);
 
+// خيارات المخطط
 const chartOptions = ref({
   chart: {
     height: 350,
@@ -43,7 +46,7 @@ const chartOptions = ref({
   colors: ["#1066e9"],
   dataLabels: {
     enabled: true,
-    formatter: (val) => `${val} ${t("Visits")}`, 
+    formatter: (val) => `${val} ${t('Visits')}`, 
     offsetY: -20,
     style: {
       fontSize: "11px",
@@ -62,20 +65,21 @@ const chartOptions = ref({
     axisTicks: { show: false },
     labels: {
       show: false,
-      formatter: (val) => `${val} ${t("Visits")}`, 
+      formatter: (val) => `${val} ${t('Visits')}`, 
     },
   },
 });
 
+// تحديث الترجمة عند تغيير اللغة
 watch(locale, () => {
   series.value = [
     {
-      name: t("visits"),
+      name: t('Visits'),
       data: [120, 200, 150, 80, 170, 210, 140],
     },
   ];
   
-  chartOptions.value.dataLabels.formatter = (val) => `${val} ${t("Visits")}`;
-  chartOptions.value.yaxis.labels.formatter = (val) => `${val} ${t("Visits")}`;
+  chartOptions.value.dataLabels.formatter = (val) => `${val} ${t('Visits')}`;
+  chartOptions.value.yaxis.labels.formatter = (val) => `${val} ${t('Visits')}`;
 });
 </script>

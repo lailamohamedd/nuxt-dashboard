@@ -59,7 +59,6 @@ const username = ref("");
 const auth = useAuthStore();
 
 const login = async () => {
-  
   auth.login({ username: username.value, password: password.value });
 }
 </script>

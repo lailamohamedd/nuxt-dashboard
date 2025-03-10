@@ -1,10 +1,8 @@
 <template>
   <div class="card bg-white px-6 pt-6 pb-2 shadow-gray-500 rounded-lg">
-    <!-- Header Section: Title & Timeframe Selection -->
     <div class="flex justify-between mb-1">
       <h2 class="mb-3 text-lg font-bold">{{ t("Reports") }}</h2>
 
-      <!-- Timeframe Selection Buttons -->
       <div class="flex space-x-2">
         <button
           v-for="(label, key) in timeFrames"
@@ -15,12 +13,11 @@
             selectedTimeFrame === key ? 'text-blue-600' : 'text-gray-400',
           ]"
         >
-          {{ label }}
+          {{ t(label) }}
         </button>
       </div>
     </div>
 
-    <!-- Line Chart Displaying Revenue Data -->
     <apexchart
       type="line"
       height="350"
@@ -31,15 +28,15 @@
 </template>
 
 <script setup>
-import { ref, computed, watch } from "vue";
+import { ref, computed } from "vue";
 import { useI18n } from "vue-i18n";
 
-const { t, locale } = useI18n();
+const { t } = useI18n();
 
 const timeFrames = computed(() => ({
-  day: t("Day"),
-  week: t("Week"),
-  month: t("Month"),
+  day: "Day",
+  week: "Week",
+  month: "Month",
 }));
 
 const selectedTimeFrame = ref("day");
@@ -53,7 +50,7 @@ const dataSets = {
 const series = computed(() => [
   {
     name: t("Revenue"),
-    data: dataSets[selectedTimeFrame.value],
+    data: dataSets[selectedTimeFrame.value] || [],
   },
 ]);
 
@@ -71,16 +68,4 @@ const chartOptions = ref({
 const setTimeFrame = (timeFrame) => {
   selectedTimeFrame.value = timeFrame;
 };
-
-watch(locale, () => {
-  chartOptions.value.xaxis.categories = [
-    t("Sun"),
-    t("Mon"),
-    t("Tue"),
-    t("Wed"),
-    t("Thu"),
-    t("Fri"),
-    t("Sat"),
-  ];
-});
 </script>

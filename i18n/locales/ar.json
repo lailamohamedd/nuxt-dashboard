@@ -40,5 +40,8 @@
   "Month": "شهر",
   "RecentOrders": "اخر الطلبات",
   "Enter_your_username": "ادخل اسم المستخدم",
-  "username": "اسم المستخدم"
+  "username": "اسم المستخدم",
+  "Cart_empty": "عربة التسوق فارغة",
+  "View_Cart": "عرض العربة",
+  "No_notifications": "لا يوجد اشعارات"
 }

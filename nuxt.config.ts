@@ -101,13 +101,13 @@ export default defineNuxtConfig({
   modules: ['@pinia/nuxt','@nuxtjs/i18n'], 
   i18n: {
     lazy: true,
-    langDir: "./locales",
+    langDir: 'locales/', 
     strategy: "no_prefix",
 
     defaultLocale: "en",
     locales: [
       { code: "en", name: "English", file: "en.json", dir: "ltr" },
-      { code: "ar", name: "Arabic", file: "ar.json", dir: "rtl" },
+      { code: "ar", name: "العربيه", file: "ar.json", dir: "rtl" },
     ],
     vueI18n: "./i18n.config.ts",
 

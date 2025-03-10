@@ -1,13 +1,13 @@
 <template>
   <div
-    :class="{
-      'ml-0 sm:ml-32 md:ml-70': !isRtl,
-      'mr-0 sm:mr-32 md:mr-70': isRtl
-    }">
+    :class="
+      language === 'ar' ? 'mr-0 sm:mr-32 md:mr-70' : 'ml-0 sm:ml-32 md:ml-70'
+    "
+  >
     <!-- Start Analytics -->
     <div class="analysis">
-      <h2 class="mx-10 pt-7 pb-0 text-lg font-bold">{{ $t('Analytics') }}</h2>
-      <AnalyticsCards />
+      <h2 class="mx-10 pt-7 pb-0 text-lg font-bold">{{ $t("Analytics") }}</h2>
+      <AnalyticsCards/>
     </div>
     <!-- End Analytics -->
     <!-- Start Charts -->
@@ -15,24 +15,25 @@
       <div class="lg:col-span-2">
         <AreaChart />
       </div>
-      <div class="">
-        <BarChart />
+      <div>
+        <BarChart/>
       </div>
     </div>
     <!-- End Charts -->
     <!-- Start Recent Orders Table -->
-    <RecentOrders />
+    <RecentOrders/>
     <!-- End Recent Orders Table -->
   </div>
 </template>
+
 <script setup>
+import AnalyticsCards from "~/components/AnalyticsCards.vue";
 import AreaChart from "~/components/charts/AreaChart.vue";
 import BarChart from "~/components/charts/BarChart.vue";
-const { locale } = useI18n();
-const isRtl = computed(() => locale.value === 'ar'); 
 
+const { locale } = useI18n();
+const language = computed(() => locale.value);
 definePageMeta({
   middleware: "auth",
 });
 </script>
-<style scoped></style>

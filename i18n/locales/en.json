@@ -39,5 +39,8 @@
     "Month": "Month",
     "RecentOrders": "Recent Orders",
     "Enter_your_username": "Enter your username",
-    "username": "Username"
+    "username": "Username",
+    "Cart_empty": "Cart is empty",
+    "View_Cart": "View Cart",
+    "No_notifications": "No notifications"
   }

@@ -18,6 +18,10 @@ body {
 .dark .card .apexcharts-menu, /* ApexCharts dropdown menu */
 .dark .drop-list,
 .dark nav, 
+.dark .user_dropdown .user_details,
+.dark .notifications .notification,
+.dark .cart_dropdown .cart,
+.dark .langs_toggle select,
 .dark .sidebar,
 .dark .report-card {
   @apply bg-gray-800 text-gray-300;
@@ -56,12 +60,15 @@ body {
 }
 
 /* Styling horizontal rule inside the sidebar */
-.dark .sidebar hr {
+.dark .sidebar hr,
+.dark .notifications .notification .border-b,
+.dark .cart_dropdown .cart .border-b {
   @apply border-gray-700;
 }
 
 /* Hover effect for table rows in dark mode */
-.dark tbody tr:hover {
+.dark tbody tr:hover,
+.dark .user_dropdown .user_details li:hover {
   @apply bg-gray-900 text-gray-200;
 }
 
