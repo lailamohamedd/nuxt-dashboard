@@ -85,7 +85,9 @@ This project is a **modern, responsive admin dashboard** built with **Nuxt.js**.
 ### 📜 Setup & Installation  
 
 ### 1️⃣ Clone the repository  
-**git clone** https://github.com/your-repo/dashboard-nuxt.git
+**git clone** 
+https://github.com/lailamohamedd/nuxt-dashboard.git
+<br>
 cd dashboard-nuxt
 
 ### 2️⃣ Install dependencies
