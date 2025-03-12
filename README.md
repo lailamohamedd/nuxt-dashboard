@@ -98,6 +98,7 @@ npm run dev
  
 ### Deployment
 **Live Demo** https://nuxt-dashboard-df6s.vercel.app/
+<br>
 **Password&Username** https://dummyjson.com/users
 
 ### 📷 Screenshots  
