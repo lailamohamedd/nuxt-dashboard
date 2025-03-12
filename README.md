@@ -95,7 +95,8 @@ npm install
 npm run dev
  
 ### Deployment
-**Live Demo** https://nuxt-dashboard-w5ds.vercel.app/
+**Live Demo** https://nuxt-dashboard-df6s.vercel.app/
+**Password&Username** https://dummyjson.com/users
 
 ### 📷 Screenshots  
 ## 💻 Desktop View  
