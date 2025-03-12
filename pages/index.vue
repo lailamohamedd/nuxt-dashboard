@@ -7,7 +7,7 @@
     <!-- Start Analytics -->
     <div class="analysis">
       <h2 class="mx-10 pt-7 pb-0 text-lg font-bold">{{ $t("Analytics") }}</h2>
-      <AnalyticsCards/>
+      <AnalyticsCards />
     </div>
     <!-- End Analytics -->
     <!-- Start Charts -->
@@ -16,12 +16,12 @@
         <AreaChart />
       </div>
       <div>
-        <BarChart/>
+        <BarChart />
       </div>
     </div>
     <!-- End Charts -->
     <!-- Start Recent Orders Table -->
-    <RecentOrders/>
+    <RecentOrders />
     <!-- End Recent Orders Table -->
   </div>
 </template>

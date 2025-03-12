@@ -2,7 +2,7 @@
   <div class="langs_toggle">
     <select class="cursor-pointer outline-0 p-1 bg-white" v-model="language">
       <option
-        class="cursor-pointer outline-0 px-3"
+        class="cursor-pointer font-bold outline-0 px-3"
         v-for="item in locales"
         :key="typeof item === 'object' ? item.code : item"
         :value="typeof item === 'object' ? item.code : item"

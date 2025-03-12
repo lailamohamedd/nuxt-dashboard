@@ -17,9 +17,8 @@
 import { ref, watch } from "vue";
 import { useI18n } from "vue-i18n";
 
-const { t, locale } = useI18n(); // تفعيل الترجمة
+const { t, locale } = useI18n();
 
-// بيانات المخطط
 const series = ref([
   {
     name: t('Visits'), 
@@ -27,7 +26,6 @@ const series = ref([
   },
 ]);
 
-// خيارات المخطط
 const chartOptions = ref({
   chart: {
     height: 350,
@@ -70,7 +68,6 @@ const chartOptions = ref({
   },
 });
 
-// تحديث الترجمة عند تغيير اللغة
 watch(locale, () => {
   series.value = [
     {

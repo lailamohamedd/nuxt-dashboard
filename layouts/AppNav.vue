@@ -1,7 +1,7 @@
 <template>
   <nav 
   v-if="!isLoginPage" 
-  class="bg-white shadow px-3 lg:px-15 md:px-15 py-3 flex justify-between "
+  class="bg-white shadow px-3 lg:px-15 md:px-15 py-3 flex justify-between"
   :class="language === 'ar' ? 'mr-0 sm:mr-32 md:mr-70' : 'ml-0 sm:ml-32 md:ml-70'"
 >
 
@@ -27,7 +27,7 @@
       <DarkModeToggle />
       <!-- Cart Dropdown -->
       <div class="relative cart_dropdown" ref="cartDropdown">
-        <button @click="toggleCartDropdown" class="relative cursor-pointer rounded-md btn-icon px-3 py-2">
+        <button @click="toggleCartDropdown" class="relative cursor-pointer rounded-md btn-icon px-3 py-2 bg-gray-100 text-gray-400">
           <i class="fa-solid fa-bag-shopping fa-lg"></i>
           <span v-if="cartItems.length" class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">
             {{ cartItems.length }}
@@ -39,15 +39,15 @@
           :class="language === 'ar' ? 'left-0' : 'right-0'"
         >
           <div v-if="cartItems.length > 0" class="space-y-3">
-            <div v-for="item in cartItems" :key="item.id" class="flex justify-between items-center border-b cursor-pointer pb-2">
-              <span class="text-sm font-semibold">{{ item.name }}</span>
-              <span class="text-sm text-gray-400">{{ item.price }}$</span>
+            <div v-for="item in cartItems" :key="item.id" class="flex justify-between items-center border-b border-gray-200 cursor-pointer pb-2">
+              <span class="text-sm font-bold">{{ item.name }}</span>
+              <span class="text-sm text-red-500 font-bold">{{ item.price }}$</span>
             </div>
-            <button class="w-full bg-blue-500 text-white py-2 cursor-pointer rounded-md mt-2 hover:bg-blue-600 transition">
+            <button class="w-full bg-blue-500 text-white py-2 cursor-pointer font-bold rounded-md mt-2 hover:bg-blue-600 transition">
               {{ $t('View_Cart') }}
             </button>
           </div>
-          <p v-else class="text-sm text-center text-gray-500">{{ $t('Cart_empty') }}</p>
+          <p v-else class="text-sm text-center text-gray-500 font-bold">{{ $t('Cart_empty') }}</p>
         </div>
       </div>
 
@@ -55,7 +55,7 @@
       <div class="relative notifications" ref="notificationsDropdown">
         <button @click="toggleNotificationsDropdown" class="relative cursor-pointer rounded-md btn-icon px-3 py-2 bg-gray-100 text-gray-400">
           <i class="fa fa-bell fa-lg"></i>
-          <span v-if="notifications.length" class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">
+          <span v-if="notifications.length" class="absolute -top-1 -right-1 bg-red-500 font-bold text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">
             {{ notifications.length }}
           </span>
         </button>
@@ -65,8 +65,8 @@
           :class="language === 'ar' ? 'left-0' : 'right-0'"
         >
           <div v-if="notifications.length > 0" class="space-y-3">
-            <div v-for="notification in notifications" :key="notification.id" class="border-b cursor-pointer pb-2 text-sm">
-              <p>{{ notification.message }}</p>
+            <div v-for="notification in notifications" :key="notification.id" class="border-b border-gray-200 cursor-pointer pb-2 text-sm">
+              <p class="font-bold">{{ notification.message }}</p>
               <span class="text-xs text-gray-400">{{ notification.time }}</span>
             </div>
           </div>
@@ -87,45 +87,16 @@
         >
           <ul class="text-sm">
             <li class="py-2 hover:bg-gray-100 rounded-md text-center">
-              <NuxtLink to="/profile" class="block px-3">{{ $t('Profile') }}</NuxtLink>
+              <NuxtLink to="/profile" class="block px-3 font-bold">{{ $t('Profile') }}</NuxtLink>
             </li>
             <li class="py-2 hover:bg-gray-100 rounded-md">
-              <button @click="logout" class="block w-full text-center">
+              <button @click="logout" class="block w-full font-bold cursor-pointer text-center">
                 {{ $t('Logout') }}
               </button>
             </li>
           </ul>
         </div>
       </div>
-      <!-- Cart Button -->
-      <!-- <button class="rounded-md btn-icon px-2 py-1 bg-gray-100 text-gray-400">
-        <i class="fa-solid fa-bag-shopping fa-md"></i>
-      </button> -->
-
-      <!-- Notifications Button -->
-      <!-- <button class="rounded-md btn-icon relative px-2 py-1 bg-gray-100 text-gray-400">
-        <i class="fa fa-bell fa-md"></i>
-        <span class="w-3 top-0 h-3 bg-red-400 absolute z-10 rounded-xl"></span>
-      </button> -->
-      
-      <!-- User Dropdown -->
-      <!-- <div class="relative" ref="dropdown">
-        <button @click="toggleDropdown" class="text-gray-800 text-center">
-          <img src="/images/user.svg" class="rounded-md mx-auto cursor-pointer" width="32" alt="user" />
-        </button>
-        <div v-if="isDropdownOpen" class="z-10 shadow absolute drop-list font-bold bg-white rounded-lg w-32 top-full "
-        :class="language === 'ar' ? 'left-0' : 'right-0'"
-        >
-          <ul class="py-2 text-sm text-gray-400">
-            <li class="px-3 py-2 text-center"><NuxtLink to="/profile">{{ $t('Profile') }}</NuxtLink></li>
-           <li class="px-3 py-2 text-center">
-            <button @click="logout" class="px-1 py-2 cursor-pointer">
-              {{ $t('Logout') }}
-            </button>
-          </li>
-          </ul>
-        </div>
-      </div> --> 
     </div>
   </nav>
 </template>
@@ -137,19 +108,11 @@ const language = computed(() => locale.value);
 const router = useRouter();
 const token = useCookie("token");
 const authStore = useAuthStore();
-// const isDropdownOpen = ref(false);
 const dropdown = ref(null);
 const route = useRoute();
 
 // Determine if the current page is the login page
 const isLoginPage = computed(() => route.path === '/auth/login');
-
-// const toggleDropdown = () => {
-//   isDropdownOpen.value = !isDropdownOpen.value;
-// };
-// onClickOutside(dropdown, () => {
-//   isDropdownOpen.value = false;
-// });
 
 // Cart Dropdown
 const isCartDropdownOpen = ref(false);

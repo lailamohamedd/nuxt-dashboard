@@ -35,9 +35,8 @@
 import { computed } from "vue";
 import { useI18n } from "vue-i18n";
 
-const { t } = useI18n(); // تفعيل الترجمة
+const { t } = useI18n();
 
-// تعريف بيانات البطاقات مع الترجمة
 const cards = computed(() => [
   {
     title: t("TotalRevenue"),

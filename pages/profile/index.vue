@@ -6,14 +6,18 @@
       class="flex flex-col items-center justify-center min-h-screen"
     >
       <div class="relative flex items-center justify-center">
-        <div class="w-16 h-16 border-4 border-gray-300 border-t-blue-500 rounded-full animate-spin"></div>
-        <div class="absolute w-12 h-12 border-4 border-gray-300 border-b-blue-500 rounded-full animate-ping"></div>
+        <div
+          class="w-16 h-16 border-4 border-gray-300 border-t-blue-500 rounded-full animate-spin"
+        ></div>
+        <div
+          class="absolute w-12 h-12 border-4 border-gray-300 border-b-blue-500 rounded-full animate-ping"
+        ></div>
       </div>
-      <p class="mt-4 text-lg font-semibold animate-pulse">{{ $t("loading") }}...</p>
+      <p class="mt-4 text-lg font-semibold animate-pulse">
+        {{ $t("loading") }}...
+      </p>
     </div>
-
     <!-- User Profile Card -->
-
     <div
       v-if="user"
       class="flex items-center justify-center min-h-screen overflow-x-auto"
